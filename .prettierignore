@@ -1,0 +1,12 @@
+dist
+.env
+.eslintrc.json
+.gitignore
+package-lock.json
+pnpm-lock.yaml
+tsconfig.json
+postcss.config.mjs
+tailwind.config.ts
+next
+node_modules
+README.md
