@@ -117,11 +117,11 @@ export default function DialogQuestionGroup({
       {children}
       <dialog
         id={idDialog}
-        className={`rounded-xl bg-slate-50 px-6 py-4 shadow-lg shadow-black/40 backdrop:bg-gradient-to-b ${COLOR_BACK[randomColor]} focus:flex ${extraStyles} dark:bg-gray-800 dark:text-slate-200 [&_button]:text-black`}
+        className={`rounded-xl bg-slate-50/70 px-6 py-4 shadow-lg shadow-black/40 backdrop:bg-gradient-to-b ${COLOR_BACK[randomColor]} focus:flex ${extraStyles} backdrop-blur-md dark:bg-gray-800/70 dark:text-slate-200 [&_button]:text-black`}
       >
         <section className="flex h-full w-[800px] flex-col items-start justify-center gap-6 overflow-y-auto p-4">
           <h3
-            className={`whitespace-pre-wrap text-sky-700 ${personQuestion.length > 250 ? "dark:text-[#dbf1ff]" : "dark:text-[#faffb0]"}`}
+            className={`whitespace-pre-wrap text-sky-600 dark:text-[#faffb0]`}
           >
             <b>{personQuestion.slice(3)}</b>
           </h3>
