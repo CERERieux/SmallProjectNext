@@ -1,14 +1,28 @@
-import Question from "../ui/Question";
+import Question from "./Question";
 import DialogQuestionGroup from "./DialogQuestionGroup";
 import AsideComments from "./AsideComments";
-import { getComments } from "../lib/services";
+import { getComments, getCommentsPages } from "../lib/services";
 import type { SearchProps } from "../lib/types";
+import Pagination from "./Pagination";
 
 export default async function AreaComments({
   answerSearch,
   commentSearch,
+  authorSearch,
+  page,
 }: SearchProps) {
-  const comments = await getComments({ answerSearch, commentSearch });
+  const comments = await getComments({
+    answerSearch,
+    commentSearch,
+    authorSearch,
+    page,
+  });
+  const totalPages = await getCommentsPages({
+    answerSearch,
+    commentSearch,
+    authorSearch,
+    page,
+  });
 
   return (
     <DialogQuestionGroup>
@@ -22,20 +36,34 @@ export default async function AreaComments({
                   question={question.comment}
                   answer={question.answer}
                   key={question.id}
+                  author={question.author}
                 />
               );
             })
           ) : (
-            <div>
-              <h1>No match with your search</h1>
-            </div>
+            <section className="col-span-3 col-start-1 h-full w-full">
+              <h4 className="text-center text-xl first-letter:text-red-500">
+                Sorry, it seems there is no result that matches your filter.{" "}
+                <br />
+                Try another search!
+              </h4>
+            </section>
           )
         ) : (
-          <div>
-            <h1>error change later</h1>
-          </div>
+          <section className="col-span-3 col-start-1 h-full w-full">
+            <h4 className="text-center text-xl first-letter:text-red-500">
+              Error: {comments.message}
+            </h4>
+          </section>
         )}
       </article>
+      {!("error" in totalPages) ? (
+        <Pagination totalPages={totalPages.totalPages} />
+      ) : (
+        <h4 className="text-center text-sm first-letter:text-red-500">
+          Error: {totalPages.message}
+        </h4>
+      )}
     </DialogQuestionGroup>
   );
 }
