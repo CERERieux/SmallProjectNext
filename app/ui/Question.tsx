@@ -1,7 +1,4 @@
-interface QuestionProps {
-  question: string;
-  answer?: string;
-}
+import type { QuestionProps } from "../lib/types";
 
 export default function Question({ question, answer = "" }: QuestionProps) {
   const questionShort =
