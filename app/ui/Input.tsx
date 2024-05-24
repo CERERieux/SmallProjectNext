@@ -1,39 +1,43 @@
 "use client";
 import { useEffect, type ChangeEvent, useState, useRef } from "react";
 
-interface TextAreaProps {
-  extraStyles?: string;
+interface TextInputProps {
   autoComplete?: string;
-  placeHolder?: string;
   id?: string;
-  name: string;
-  cols: number;
-  rows: number;
   max?: number;
   min?: number;
+  name: string;
+  placeHolder?: string;
   required?: boolean;
+  size?: number;
+  type: string;
   value: string;
   lineStyle: boolean;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   newCycle?: boolean;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  extraStyles?: string;
+  canBeTooLong?: boolean;
+  pattern?: string;
 }
 
-export default function TextArea({
+export default function Input({
+  autoComplete,
   extraStyles,
-  autoComplete = "off",
-  placeHolder,
   id,
-  name,
-  cols = 20,
-  rows = 2,
   max,
   min,
+  name,
+  placeHolder,
   required,
+  size,
+  type,
   value,
   lineStyle,
   onChange,
+  pattern,
   newCycle = false, // Auxiliar to indicate we are in a new cycle and input "modified" flag can be reseted
-}: TextAreaProps) {
+  canBeTooLong = false, // Auxiliar to activate styles in case text overflow input text
+}: TextInputProps) {
   const modified = useRef(false); // Flag to see if user already interact with the form
   const [localError, setLocalError] = useState(""); // State to save the error that info can have
   const localInput =
@@ -45,7 +49,10 @@ export default function TextArea({
   const styleLine = lineStyle
     ? "border-x-0 border-t-0 bg-transparent py-0 pt-1 focus:ring-0"
     : ""; // Auxiliar to change the look of the input
-
+  const longText =
+    canBeTooLong && size != null && value.length > size - 3
+      ? "bg-gradient-to-l from-sky-200 from-5% to-30%"
+      : "";
   // Use effect to reset input component in case we keep using it after sending the form
   useEffect(() => {
     if (newCycle) {
@@ -65,7 +72,7 @@ export default function TextArea({
       }
       // Check for validity, if it have an error, display it
       if (!currentInput.checkValidity() && modified.current) {
-        const error = errorInput({ validity, min, max });
+        const error = errorInput({ validity, type, min, max });
         setLocalError(error);
       } else {
         setLocalError("");
@@ -76,46 +83,53 @@ export default function TextArea({
   // Return a div with the input and the space for the error of the user info
   return (
     <div className="relative h-full">
-      <textarea
-        autoComplete={autoComplete}
-        id={id}
-        name={name}
-        cols={cols}
-        rows={rows}
-        maxLength={max}
-        minLength={min}
-        placeholder={placeHolder}
-        spellCheck
-        required={required}
-        value={value}
-        onChange={onChange}
-        className={`${invalidStyles} ${styleLine} ${extraStyles} resize-none placeholder:text-sm placeholder:text-gray-300`}
-      />
-      <p className="absolute -bottom-3 left-0 text-sm italic text-red-500 [font-size:11px] [line-height:1rem]">
+      <div className="relative">
+        {canBeTooLong && (
+          <div
+            className={`absolute right-0 top-0 z-10 h-[95%] w-[10%] ${longText}`}
+          ></div>
+        )}
+        <input
+          autoComplete={autoComplete}
+          id={id}
+          maxLength={max}
+          minLength={min}
+          name={name}
+          placeholder={placeHolder}
+          required={required}
+          type={type}
+          value={value}
+          onChange={onChange}
+          className={`${invalidStyles} ${styleLine} ${extraStyles} placeholder:text-sm placeholder:text-gray-300`}
+          size={size}
+          pattern={pattern}
+        />
+      </div>
+      <p className="absolute text-sm italic text-red-500 [font-size:11px] [line-height:1rem]">
         {localError}
       </p>
-      {max != null && (
-        <p className="absolute -bottom-3 right-6 text-sm italic">
-          {max - value.length}
-        </p>
-      )}
     </div>
   );
 }
 
 interface errorInputProps {
   validity: ValidityState;
+  type: string;
   min?: number;
   max?: number;
 }
 // Function to see what error the info has and return a sentence to help user
-function errorInput({ validity, min, max }: errorInputProps) {
-  if (validity.badInput) return "You put an invalid character.";
-  else if (validity.tooShort)
+function errorInput({ validity, type, min, max }: errorInputProps) {
+  if (validity.badInput) return "Only number inputs are allowed.";
+  else if (validity.patternMismatch) {
+    const example =
+      type === "email" ? "example@live.com" : "https://www.google.com";
+    return `Please introduce valid information. Example: ${example}`;
+  } else if (validity.tooShort)
     return `Text needs to be ${min} character long at least.`;
   else if (validity.tooLong)
     return `Text do not have to exceed ${max} characters.`;
   else if (validity.valueMissing)
-    return "Please don't leave the text area empty.";
+    return "Please don't leave the input field empty.";
   return "";
 }

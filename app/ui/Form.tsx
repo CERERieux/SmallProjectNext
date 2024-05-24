@@ -8,6 +8,7 @@ interface LoginFormProps {
   style?: string;
   mdMedia?: string;
   row?: boolean;
+  action?: string | ((formData: FormData) => void) | undefined;
 }
 
 export default function Form({
@@ -18,6 +19,7 @@ export default function Form({
   style = "items-center justify-around gap-4",
   mdMedia = "[&_span]:md:w-1/5",
   row = false,
+  action,
 }: LoginFormProps) {
   const onSubmit = submitAsync ?? submitFn;
   const flexDir = row ? "flex-row" : "flex-col";
@@ -26,6 +28,7 @@ export default function Form({
       onSubmit={onSubmit}
       className={`flex h-full w-full ${flexDir} ${style} [&_span]:w-1/4 [&_span]:text-right ${mdMedia}`}
       id={id}
+      action={action}
     >
       {children}
     </form>
