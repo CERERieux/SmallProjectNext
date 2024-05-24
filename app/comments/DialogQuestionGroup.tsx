@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
+import type { Comments } from "../lib/types";
 
 // Colors for the backdrop of the modal
 const COLOR_BACK = [
@@ -17,6 +18,12 @@ const COLOR_BACK = [
 interface DialogProps {
   children: React.ReactNode;
   extraStyles?: string;
+  comments:
+    | Comments[]
+    | {
+        error: unknown;
+        message: string;
+      };
 }
 
 /** Function that open a dialog element */
@@ -43,6 +50,7 @@ const handleCloseModalOutside = (dialog: HTMLDialogElement, e: MouseEvent) => {
 export default function DialogQuestionGroup({
   children,
   extraStyles,
+  comments,
 }: DialogProps) {
   const idDialog = "CommentAnswerDialog";
   const idClose = "CloseCommentAnswerDialog";
@@ -109,7 +117,7 @@ export default function DialogQuestionGroup({
         });
       };
     }
-  }, []);
+  }, [comments]);
 
   // Return the dialog element
   return (

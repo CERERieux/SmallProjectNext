@@ -25,7 +25,7 @@ export default async function AreaComments({
   });
 
   return (
-    <DialogQuestionGroup>
+    <DialogQuestionGroup comments={comments}>
       <AsideComments />
       <article className="grid w-[1100px] grid-cols-3 justify-items-center gap-10 px-8 py-6">
         {!("error" in comments) ? (

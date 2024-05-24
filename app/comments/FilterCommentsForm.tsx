@@ -15,7 +15,10 @@ export default function FilterCommentForm() {
       const valueComment = e.target.value;
       const params = new URLSearchParams(searchParams);
       if (valueComment) params.set("comment", valueComment);
-      else params.delete("comment");
+      else {
+        params.set("comment", "");
+        // params.delete("comment");
+      }
       replace(`${pathname}?${params.toString()}`);
     },
     300,
@@ -25,7 +28,10 @@ export default function FilterCommentForm() {
       const valueAnswer = e.target.value;
       const params = new URLSearchParams(searchParams);
       if (valueAnswer) params.set("answer", valueAnswer);
-      else params.delete("answer");
+      else {
+        params.set("answer", "");
+        // params.delete("answer");
+      }
       replace(`${pathname}?${params.toString()}`);
     },
     300,
@@ -35,7 +41,10 @@ export default function FilterCommentForm() {
       const valueAuthor = e.target.value;
       const params = new URLSearchParams(searchParams);
       if (valueAuthor) params.set("author", valueAuthor);
-      else params.delete("author");
+      else {
+        params.set("author", "");
+        // params.delete("author")
+      }
       replace(`${pathname}?${params.toString()}`);
     },
     300,
