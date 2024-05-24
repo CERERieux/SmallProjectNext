@@ -1,6 +1,6 @@
 import { OpacityState } from "../lib/types";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 import FilterCommentForm from "./FilterCommentsForm";
+import CloseButton from "../ui/CloseButton";
 
 interface FilterProps {
   opacity: OpacityState;
@@ -19,12 +19,7 @@ export default function FilterComments({
         <h3 className="text-xl first-letter:text-2xl first-letter:text-sky-300">
           Filter
         </h3>
-        <button
-          className="absolute left-4 top-4 flex size-8 items-center justify-center rounded-full text-white transition-all hover:scale-110 hover:bg-red-500 active:scale-95 active:bg-white active:text-black"
-          onClick={handleOpacity}
-        >
-          <XMarkIcon className="w-6" />
-        </button>
+        <CloseButton onClick={handleOpacity} />
         <FilterCommentForm />
       </section>
     </aside>

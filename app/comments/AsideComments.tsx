@@ -13,7 +13,7 @@ export default function AsideComments() {
   };
   return (
     <>
-      <div className="absolute right-8 top-40">
+      <div className="absolute right-[11.5rem] top-[7.75rem]">
         <Button
           onClick={handleOpacity}
           color="bg-slate-200 text-sky-600 hover:bg-sky-600 hover:text-slate-50 border-none dark:bg-slate-50"

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import AreaComments from "./AreaComments";
 import type { CommentPageProps } from "../lib/types";
 import SendComment from "./SendComment";
+import { ToastContainer } from "react-toastify";
 
 export default function CommentsPage({ searchParams }: CommentPageProps) {
   const commentSearch = searchParams?.comment?.toLowerCase() || "";
@@ -14,10 +15,10 @@ export default function CommentsPage({ searchParams }: CommentPageProps) {
       <h1 className="text-center text-2xl text-sky-500 dark:text-lime-300">
         Comments and Questions
       </h1>
-      <div className="flex w-full items-center justify-between">
-        <p className="text-sm text-yellow-100">
-          Hi and welcome! Here you can send me any question or comment you want
-          to share with me :) <br />
+      <div className="flex w-full items-center justify-around">
+        <p className="text-sm dark:text-yellow-100">
+          Hi and welcome! Here you can send me any question, comment or in
+          general, share anything you want :) <br />
           I&apos;ll try to reply when I&apos;m free! <br />
           (Only the comments I replied to will appear below <s>just in case</s>)
         </p>
@@ -31,6 +32,7 @@ export default function CommentsPage({ searchParams }: CommentPageProps) {
           page={page}
         />
       </Suspense>
+      <ToastContainer />
     </main>
   );
 }
