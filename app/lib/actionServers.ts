@@ -1,5 +1,7 @@
 "use server";
+import { auth } from "@/auth";
 import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 // Schema to validate the info I get from user
@@ -49,5 +51,23 @@ export async function createComment(prevState: any, formData: FormData) {
       errors: result.error.flatten().formErrors,
       message: result.error.flatten().fieldErrors,
     };
+  }
+}
+
+export async function deleteComment(id: string) {
+  const session = await auth();
+  if (session === null || session.user?.name !== process.env.ADMIN) {
+    return {
+      error: "No User or Not Admin",
+      message: "You can't delete the comments if you aren't an admin...",
+    };
+  }
+  try {
+    await sql`DELETE FROM comments WHERE id::text = ${id}`;
+    revalidatePath("/admincomments");
+    return { error: null, message: "Comment was deleted successfully" };
+  } catch (error) {
+    console.error(error);
+    return { error, message: "Something went wrong in the DB..." };
   }
 }
