@@ -14,8 +14,13 @@ export default function FilterCommentForm() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const valueComment = e.target.value;
       const params = new URLSearchParams(searchParams);
-      if (valueComment) params.set("comment", valueComment);
-      else {
+      if (valueComment) {
+        params.set("comment", valueComment);
+        if (params.get("page") != null) {
+          console.log(params.get("page"));
+          params.set("page", "1");
+        }
+      } else {
         params.set("comment", "");
         // params.delete("comment");
       }
@@ -27,8 +32,13 @@ export default function FilterCommentForm() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const valueAnswer = e.target.value;
       const params = new URLSearchParams(searchParams);
-      if (valueAnswer) params.set("answer", valueAnswer);
-      else {
+      if (valueAnswer) {
+        params.set("answer", valueAnswer);
+        if (params.get("page") != null) {
+          console.log(params.get("page"));
+          params.set("page", "1");
+        }
+      } else {
         params.set("answer", "");
         // params.delete("answer");
       }
@@ -40,8 +50,13 @@ export default function FilterCommentForm() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const valueAuthor = e.target.value;
       const params = new URLSearchParams(searchParams);
-      if (valueAuthor) params.set("author", valueAuthor);
-      else {
+      if (valueAuthor) {
+        params.set("author", valueAuthor);
+        if (params.get("page") != null) {
+          console.log(params.get("page"));
+          params.set("page", "1");
+        }
+      } else {
         params.set("author", "");
         // params.delete("author")
       }
