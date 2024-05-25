@@ -3,7 +3,7 @@ import type { UUID } from "crypto";
 export interface Comments {
   id: UUID;
   comment: string;
-  answer: string;
+  answer: string | null;
   author: string;
 }
 
