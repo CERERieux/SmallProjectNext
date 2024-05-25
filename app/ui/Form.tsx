@@ -7,6 +7,7 @@ interface LoginFormProps {
   id?: string;
   style?: string;
   mdMedia?: string;
+  textPos?: string;
   row?: boolean;
   action?: string | ((formData: FormData) => void) | undefined;
 }
@@ -18,6 +19,7 @@ export default function Form({
   id,
   style = "items-center justify-around gap-4",
   mdMedia = "[&_span]:md:w-1/5",
+  textPos = "[&_span]:text-right",
   row = false,
   action,
 }: LoginFormProps) {
@@ -26,7 +28,7 @@ export default function Form({
   return (
     <form
       onSubmit={onSubmit}
-      className={`flex h-full w-full ${flexDir} ${style} [&_span]:w-1/4 [&_span]:text-right ${mdMedia}`}
+      className={`flex h-full w-full ${flexDir} ${style} [&_span]:w-1/4 ${textPos} ${mdMedia}`}
       id={id}
       action={action}
     >

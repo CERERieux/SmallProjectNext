@@ -75,7 +75,7 @@ export default function TextArea({
 
   // Return a div with the input and the space for the error of the user info
   return (
-    <div className="relative h-full">
+    <div className="relative">
       <textarea
         autoComplete={autoComplete}
         id={id}
