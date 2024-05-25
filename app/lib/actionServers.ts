@@ -11,15 +11,21 @@ const FormSchema = z.object({
     .string()
     .min(1, { message: "Comment cannot be empty" })
     .max(500, { message: "Comment only can have 500 characters." }),
-  answer: z.string(),
+  answer: z.nullable(z.string()),
   author: z
     .string()
     .max(50, { message: "Author only can be less than 50 characters." }),
   date: z.string(),
 });
 
-// Object to validate creation of comments
+// Object to validate creation and update of comments
 const CreateComment = FormSchema.omit({ id: true, date: true, answer: true });
+const UpdateComment = FormSchema.omit({
+  id: true,
+  date: true,
+  author: true,
+  comment: true,
+});
 
 export async function createComment(prevState: any, formData: FormData) {
   //Get author to see if is anonymous or not
@@ -36,6 +42,7 @@ export async function createComment(prevState: any, formData: FormData) {
       await sql`INSERT INTO comments (comment,author,date)
           VALUES (${result.data.comment},${result.data.author},NOW())`;
       // Return a message to know it was a success
+      revalidatePath("/adminComment");
       return { error: null, message: "Your comment was sent successfully!" };
     } catch (error) {
       console.error(error);
@@ -43,6 +50,50 @@ export async function createComment(prevState: any, formData: FormData) {
       return {
         error: error,
         message: "An error happened at saving your comment! Try again later.",
+      };
+    }
+  } else {
+    // If an error happened at the validation, return a message
+    return {
+      errors: result.error.flatten().formErrors,
+      message: result.error.flatten().fieldErrors,
+    };
+  }
+}
+
+export async function updateComment(
+  id: string,
+  prevState: any,
+  formData: FormData,
+) {
+  // Get admin session, if not valid, return error
+  const session = await auth();
+  if (session === null || session.user?.name !== process.env.ADMIN) {
+    return {
+      error: "No User or Not Admin",
+      message: "You can't update the answers if you aren't an admin...",
+    };
+  }
+  // Get the answer and validate it
+  const myAnswer =
+    formData.get("AnswerPersonComment") === ""
+      ? null
+      : formData.get("AnswerPersonComment");
+  const result = UpdateComment.safeParse({
+    answer: myAnswer,
+  });
+  if (result.success) {
+    // If it was good, then save it in db, send an error if it can't be done
+    try {
+      await sql`UPDATE comments SET answer = ${result.data.answer} WHERE id::text = ${id}`;
+      revalidatePath(`/admincomments/${id}`);
+      revalidatePath("/comments");
+      return { error: null, message: "Answer was sent successfully" };
+    } catch (error) {
+      console.error(error);
+      return {
+        error: error,
+        message: "An error happened at saving your answer! Try again later.",
       };
     }
   } else {
