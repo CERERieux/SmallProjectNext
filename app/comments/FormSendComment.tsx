@@ -39,8 +39,19 @@ export default function FormSendComment({ idDialog }: FormSendCommentProps) {
         theme: "dark",
         transition: Flip,
       });
+    } else if (state.message !== "") {
+      toast.error(`${state.message}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Flip,
+      });
     }
-    /** TODO Toasty for errors */
   }, [state]);
 
   const handleComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

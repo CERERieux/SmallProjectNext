@@ -28,7 +28,7 @@ export interface CommentPageProps {
 }
 export interface QuestionProps {
   question: string;
-  answer?: string;
+  answer: string | null;
   author: string;
 }
 
