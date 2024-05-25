@@ -18,7 +18,7 @@ interface ResultDeleteState {
 }
 
 export default function CommentList({ comments }: CommentsProps) {
-  const [noAnswer, setNoAnswer] = useState(false);
+  const [noAnswer, setNoAnswer] = useState(true);
   const [filteredComments, setFilteredComments] = useState<Comments[]>([]);
   const [resultDelete, setResultDelete] = useState<ResultDeleteState>({
     error: null,
@@ -46,8 +46,19 @@ export default function CommentList({ comments }: CommentsProps) {
         theme: "dark",
         transition: Flip,
       });
+    } else if (resultDelete.message !== "") {
+      toast.error(`${resultDelete.message}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Flip,
+      });
     }
-    /** TODO Toasty for errors */
   }, [resultDelete]);
 
   const handleNoAnswer = () => {

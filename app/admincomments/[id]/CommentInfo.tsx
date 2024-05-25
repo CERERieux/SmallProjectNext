@@ -40,8 +40,19 @@ export default function CommentInfo({ id, comment }: CommentInfoProps) {
         theme: "dark",
         transition: Flip,
       });
+    } else if (state.message !== "") {
+      toast.error(`${state.message}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Flip,
+      });
     }
-    /** TODO Toasty for errors */
   }, [state]);
 
   const handleAnswer = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -49,7 +60,7 @@ export default function CommentInfo({ id, comment }: CommentInfoProps) {
   };
 
   return (
-    <article className="flex h-full w-[1000px] flex-col gap-8 px-6 py-8 dark:bg-transparent/40 dark:text-white dark:backdrop-blur-sm">
+    <article className="flex h-full w-[1000px] flex-col gap-8 overflow-y-auto px-6 py-8 dark:bg-transparent/40 dark:text-white dark:backdrop-blur-sm">
       <h1 className="text-xl first-letter:text-blue-500 dark:first-letter:text-blue-300">
         {comment.comment}
       </h1>
