@@ -41,21 +41,20 @@ export async function createComment(prevState: any, formData: FormData) {
     try {
       await sql`INSERT INTO comments (comment,author,date)
           VALUES (${result.data.comment},${result.data.author},NOW())`;
-      // Return a message to know it was a success
-      revalidatePath("/adminComment");
-      return { error: null, message: "Your comment was sent successfully!" };
     } catch (error) {
       console.error(error);
       // Send an error if db failed
-      return {
-        error: error,
-        message: "An error happened at saving your comment! Try again later.",
-      };
+      throw new Error(
+        "An error happened at saving your comment! Try again later.",
+      );
     }
+    // Return a message to know it was a success
+    revalidatePath("/adminComment");
+    return { error: null, message: "Your comment was sent successfully!" };
   } else {
     // If an error happened at the validation, return a message
     return {
-      errors: result.error.flatten().formErrors,
+      error: "Error in zod validation",
       message: result.error.flatten().fieldErrors,
     };
   }
@@ -86,20 +85,18 @@ export async function updateComment(
     // If it was good, then save it in db, send an error if it can't be done
     try {
       await sql`UPDATE comments SET answer = ${result.data.answer} WHERE id::text = ${id}`;
-      revalidatePath(`/admincomments/${id}`);
-      revalidatePath("/comments");
-      return { error: null, message: "Answer was sent successfully" };
     } catch (error) {
       console.error(error);
-      return {
-        error: error,
-        message: "An error happened at saving your answer! Try again later.",
-      };
+      throw new Error(
+        "An error happened at saving your answer! Try again later.",
+      );
     }
+    revalidatePath(`/admincomments/${id}`);
+    return { error: null, message: "Answer was sent successfully" };
   } else {
     // If an error happened at the validation, return a message
     return {
-      errors: result.error.flatten().formErrors,
+      error: "Error in zod validation",
       message: result.error.flatten().fieldErrors,
     };
   }
@@ -115,10 +112,12 @@ export async function deleteComment(id: string) {
   }
   try {
     await sql`DELETE FROM comments WHERE id::text = ${id}`;
-    revalidatePath("/admincomments");
-    return { error: null, message: "Comment was deleted successfully" };
   } catch (error) {
     console.error(error);
-    return { error, message: "Something went wrong in the DB..." };
+    throw new Error(
+      "Something went wrong in the DB when deleting your message...",
+    );
   }
+  revalidatePath("/admincomments");
+  return { error: null, message: "Comment was deleted successfully" };
 }

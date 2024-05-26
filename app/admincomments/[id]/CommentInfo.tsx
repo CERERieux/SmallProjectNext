@@ -41,17 +41,21 @@ export default function CommentInfo({ id, comment }: CommentInfoProps) {
         transition: Flip,
       });
     } else if (state.message !== "") {
-      toast.error(`${state.message}`, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Flip,
-      });
+      const message: Object = state.message.valueOf();
+      if ("answer" in message) {
+        const [answer] = message.answer as string[];
+        toast.error(`${answer}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Flip,
+        });
+      }
     }
   }, [state]);
 

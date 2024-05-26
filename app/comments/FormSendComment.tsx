@@ -40,17 +40,35 @@ export default function FormSendComment({ idDialog }: FormSendCommentProps) {
         transition: Flip,
       });
     } else if (state.message !== "") {
-      toast.error(`${state.message}`, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Flip,
-      });
+      const message: Object = state.message.valueOf();
+      if ("author" in message) {
+        const [author] = message.author as string[];
+        toast.error(`${author}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Flip,
+        });
+      }
+      if ("comment" in message) {
+        const [commentUser] = message.comment as string[];
+        toast.error(`${commentUser}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Flip,
+        });
+      }
     }
   }, [state]);
 
@@ -97,6 +115,7 @@ export default function FormSendComment({ idDialog }: FormSendCommentProps) {
             value={author}
             extraStyles="text-sm"
             autoComplete="off"
+            max={50}
           />
         </LabelForm>
         <Button
