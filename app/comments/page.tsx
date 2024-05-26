@@ -4,6 +4,14 @@ import type { CommentPageProps } from "../lib/types";
 import SendComment from "./SendComment";
 import { ToastContainer } from "react-toastify";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Comments and Questions",
+  description:
+    "A place where you can send me something that you want to share with me through text.",
+};
+
 export default function CommentsPage({ searchParams }: CommentPageProps) {
   const commentSearch = searchParams?.comment?.toLowerCase() || "";
   const answerSearch = searchParams?.answer?.toLowerCase() || "";

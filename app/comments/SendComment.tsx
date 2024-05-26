@@ -12,7 +12,7 @@ export default function SendComment() {
   return (
     <>
       <Button
-        color="border-none bg-sky-300 hover:bg-slate-900 dark:bg-lime-600 dark:text-white dark:hover:bg-slate-50 dark:hover:text-black"
+        color="border-none text-sky-950 bg-sky-200 hover:bg-slate-900 dark:bg-lime-600 dark:text-white dark:hover:bg-slate-50 dark:hover:text-black"
         extraStyles="flex gap-4 justify-center items-center hover:scale-105"
         id={idOpen}
         xSize="mr-2 w-52 mb-8"

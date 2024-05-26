@@ -35,6 +35,7 @@ export interface QuestionProps {
   question: string;
   answer: string | null;
   author: string;
+  color: number;
 }
 
 export type OpacityState = "opacity-0 -z-10" | "opacity-100 z-30";

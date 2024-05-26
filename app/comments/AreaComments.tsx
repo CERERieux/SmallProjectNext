@@ -30,13 +30,14 @@ export default async function AreaComments({
       <article className="grid w-[1100px] grid-cols-3 justify-items-center gap-10 px-8 py-6">
         {!("error" in comments) ? (
           comments.length > 0 ? (
-            comments.map(question => {
+            comments.map((question, i) => {
               return (
                 <Question
                   question={question.comment}
                   answer={question.answer}
                   key={question.id}
                   author={question.author}
+                  color={i}
                 />
               );
             })
