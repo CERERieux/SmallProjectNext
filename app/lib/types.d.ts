@@ -1,5 +1,10 @@
 import type { UUID } from "crypto";
 
+export interface ErrorProps {
+  error: Error & { digest?: string };
+  reset: () => void;
+}
+
 export interface Comments {
   id: UUID;
   comment: string;
