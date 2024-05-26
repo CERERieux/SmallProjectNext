@@ -3,7 +3,6 @@ import AreaComments from "./AreaComments";
 import type { CommentPageProps } from "../lib/types";
 import SendComment from "./SendComment";
 import { ToastContainer } from "react-toastify";
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

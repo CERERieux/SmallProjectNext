@@ -3,10 +3,16 @@ import CommentInfo from "./CommentInfo";
 import { getCommentById } from "@/app/lib/services";
 import { ToastContainer } from "react-toastify";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 interface UpdateCommentsParams {
   params: { id: string };
 }
+
+export const metadata: Metadata = {
+  title: "Answer the comment!",
+};
+
 export default async function PageUpdateComments({
   params,
 }: UpdateCommentsParams) {

@@ -3,6 +3,11 @@ import { Suspense } from "react";
 import CommentArea from "./CommentArea";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Comment List",
+};
 
 export default async function PageAdminComments() {
   const session = await auth();
