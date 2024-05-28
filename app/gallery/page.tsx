@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import CarrouselContainer from "./CarrouselContainer";
 
 export const metadata: Metadata = {
   title: "Draw Gallery",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <div>
-      <h1>Gallery</h1>
-    </div>
+    <main className="flex w-screen items-center">
+      <CarrouselContainer />
+    </main>
   );
 }
