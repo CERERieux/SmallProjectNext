@@ -27,7 +27,7 @@ export default function HomeButton({
     <Link href={"/"}>
       <ActionButton
         coverColor="bg-lime-400 dark:text-black dark:bg-white p-2"
-        hoverColor="hover:bg-sky-300 dark:hover:bg-lime-800"
+        hoverColor="hover:bg-sky-300 dark:hover:bg-lime-800 dark:hover:text-white"
         groupName={["group/home", "group-hover/home:block"]}
         position={position}
         tooltipText="Home"
