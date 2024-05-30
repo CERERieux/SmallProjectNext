@@ -4,19 +4,17 @@ interface PlaylistPageParams {
   params: { id: string };
 }
 
+const PLAYLISTS = [
+  "https://www.youtube.com/playlist?list=PLwMOB9Os2H-EhfJraPlKdwjRG9zUzgIW0",
+  "https://www.youtube.com/playlist?list=PLwMOB9Os2H-HAZOY9cYVye0kydZME8hll",
+  "https://www.youtube.com/playlist?list=PLwMOB9Os2H-GRbukjARnAZ471I-pzeCCY",
+];
+
 export default function PlaylistPage({ params }: PlaylistPageParams) {
   const { id } = params;
   const playlist = Number(id);
-  if (playlist < 1 || playlist > 2) {
+  if (playlist < 1 || playlist > 3) {
     notFound();
   }
-  if (playlist === 1) {
-    redirect(
-      "https://www.youtube.com/playlist?list=PLwMOB9Os2H-EhfJraPlKdwjRG9zUzgIW0",
-    );
-  } else if (playlist === 2) {
-    redirect(
-      "https://www.youtube.com/playlist?list=PLwMOB9Os2H-HAZOY9cYVye0kydZME8hll",
-    );
-  }
+  redirect(PLAYLISTS[playlist - 1]);
 }
