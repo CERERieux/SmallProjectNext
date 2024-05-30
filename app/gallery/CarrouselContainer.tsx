@@ -214,7 +214,7 @@ I started to take 4 days as before.
 
 I started to realize that I make the head bigger than the body, so I tried to make it smaller.
 I wanted to draw Kohane humming while enjoying her music, so I did this. Later I thought the pose it’s weird or I haven’t seen someone walking while grabbing their phone like this so maybe it’s a bit strange.
-(And maybe wireless earphones would be better now that I think of...)
+(And maybe wireless earphones would be better now that I think about it...)
 
 Also, for me the point of this drawing was to try to do a better background, a bad bg can make the whole drawing worse so I wanted to get better at it while I keep practicing characters.
 I think it was better than the past ones, maybe if I did a better job at the books, would look better.
@@ -376,7 +376,7 @@ export default function CarrouselContainer() {
           them light, so it doesn&apos;t consume too much bandwidth (I&apos;m
           using a free host plan and for it, this site has a limit in bandwidth,
           later I&apos;ll see if I can upscale those a little bit more but for
-          now I&apos;ll leave them like
+          now I&apos;ll leave them like this)
         </p>
         <p>To start seeing my drawing, click the button below :)</p>
       </div>
