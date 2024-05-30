@@ -4,6 +4,7 @@ import ImageContainer from "./ImageContainer";
 import AsideContainer from "./AsideContainer";
 import Button from "../ui/Button";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { shadowIntoLight } from "../ui/fonts";
 
 const IMAGE_DATA = {
   1: {
@@ -44,7 +45,6 @@ I took 4-5 days to finish this one.
 
 I have never played Genshin and probably never will (and probably most of gachas due lack of time), I already struggle to make space for stuff I’m interested in :(
 I didn’t try it on release because my phone and PC aren't good enough so I skipped it heh
-
 
 I liked how it looked and I thought it was ok, just a bit hard to draw for the details since I was starting. I don’t know what she does but I thought this pose would be cute.
 `,
@@ -293,7 +293,7 @@ Angry Ena, Laughing Mizuki and Happy Miku.
     width: 1360,
     height: 962,
     description: `And as for my last drawing and the 46th, it’s Mizuki watching anime!
-It took 5 days to finish it :) 
+It took 5 days to finish it :) (Near the end of March)
 
 This time I wanted to try night illumination again and do more N25 drawings. This came to my mind because of the normal seasonal lines and also I wanted to do a joyful expression.
 
@@ -355,10 +355,12 @@ export default function CarrouselContainer() {
       <AsideContainer description={IMAGE_DATA[carrouselIndex].description} />
     </>
   ) : (
-    <article className="flex min-h-screen w-full flex-col items-center gap-8 px-8 py-4 [&_p]:w-[700px] [&_p]:text-sm">
-      <h2 className="text-center text-2xl">Drawing gallery</h2>
+    <article
+      className={`flex min-h-screen w-full flex-col items-center gap-8 px-8 py-4 [&_p]:w-[700px] ${shadowIntoLight.className} [&_p]:text-lg`}
+    >
+      <h2 className={`text-center text-4xl`}>Drawing gallery</h2>
       <div className="flex flex-col gap-6 rounded-md bg-white/50 p-4 shadow-md dark:bg-transparent/40 dark:shadow-black/80 dark:backdrop-blur-sm">
-        <p>
+        <p className={`${shadowIntoLight.className}`}>
           Here I want to show some of my drawings I did in 2022 and 2023 with
           some commentary about them ^^
         </p>
