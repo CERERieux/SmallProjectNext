@@ -31,9 +31,10 @@ export default function SendComment() {
             Send your comment!
           </TitleForm>
           <FormSendComment idDialog={idDialog} />
-          <p className="text-xs text-sky-700 dark:text-blue-200">
+          <p className="-mt-4 whitespace-pre-wrap text-xs text-sky-700 dark:text-blue-200">
             If you want to send an Anonymous message, just leave the Author
-            field empty :)
+            field empty :){"\n"}
+            And I&apos;m the only want that can delete comments sent!
           </p>
         </article>
         <CloseButton id={idClose} textColor="text-black dark:text-white" />

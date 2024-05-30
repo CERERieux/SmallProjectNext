@@ -129,11 +129,11 @@ export default function DialogQuestionGroup({
       >
         <section className="flex h-full w-[800px] flex-col items-start justify-center gap-6 overflow-y-auto p-4">
           <h3
-            className={`whitespace-pre-wrap text-sky-600 dark:text-[#faffb0]`}
+            className={`whitespace-pre-wrap text-lg text-sky-600 dark:text-[#faffb0]`}
           >
             <b>{personQuestion.slice(3)}</b>
           </h3>
-          <p className="whitespace-pre-wrap text-sm">{myAnswer.slice(3)}</p>
+          <p className="whitespace-pre-wrap">{myAnswer.slice(3)}</p>
           <div className="flex w-full justify-center">
             <Button
               id={idClose}
