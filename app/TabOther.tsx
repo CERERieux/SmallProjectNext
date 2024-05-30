@@ -12,7 +12,7 @@ Maybe I forget to add stuff to this one but I think this way is more fun or quic
       <p className="self-center">
         You can look at the{" "}
         <a
-          href={"/playlist/1"}
+          href={"/playlist/3"}
           className="text-blue-400 underline dark:text-yellow-400"
           target="_blank"
           rel="noreferrer noopener"
@@ -21,7 +21,7 @@ Maybe I forget to add stuff to this one but I think this way is more fun or quic
         </a>
       </p>
       <p>{`(Also, not necessarily I know much about the thing I put in the playlist, maybe I put it because I liked the song or I played/watched that thing a while ago and right now I don’t remember much :) 
-And a few songs from the 1st tab are here)`}</p>
+While doing the playlist, I see there are really things I don’t remember much haha and probably I could fill it with more songs from more stuff I played/watched but I guess it’s ok for now. I had a good time doing this :D )`}</p>
       <p>{`If you listened to any playlist or just read what was in these tabs, thanks for your time. (^-^)
 I hope you could enjoy 1 song from those 3 playlists, if not, well, better luck next time haha.
 `}</p>

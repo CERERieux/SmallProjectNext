@@ -26,12 +26,12 @@ Right now I prefer to just share it as I did it at that time. `}
       </p>
       <p>{`And I did a second playlist!
 Here I dump all the songs I share in my profile of that game, this way I know what I have shared. I don't know how many songs I’ll share through my profile but still growing slowly.
-(Likely would be bigger if I wouldn’t forget to update it each 3-4 days instead of each week lol)
+(Likely would be bigger if I wouldn’t forget to update it each 3-4 days instead of each week lol And maybe some songs will overlap with the other playlists...)
 `}</p>
       <p className="self-center">
         You can look at the{" "}
         <a
-          href={"/playlist/1"}
+          href={"/playlist/2"}
           className="text-blue-400 underline dark:text-yellow-400"
           target="_blank"
           rel="noreferrer noopener"

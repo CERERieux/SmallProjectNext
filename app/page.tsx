@@ -24,7 +24,7 @@ export default function Home() {
             {`This is a mini project I started on May 21st, I wanted`}{" "}
             <span className="line-through">and needed</span>{" "}
             {`to learn Next.js and here I am.
-I had in mind to do a page where I could code the classic Create, Read, Update and Delete to learn how this works.
+I had in mind to do a page where I could code the classic Create, Read, Update and Delete to learn how this framework works.
 `}
           </p>
           <p>
@@ -48,7 +48,7 @@ Maybe with the time I add more to this website or maybe not, I still need to lea
           </p>
           <p>
             {`Thanks for checking out my page and feel free to look around this little place I did in a few days!
-(Now I understand why Next.js is used, it’s ok but right now I feel more comfortable doing the entire apps with the classic MERN stack, maybe with time I would prefer Next but not now heh)
+(Now I understand why Next.js is used, it’s ok but right now I feel more comfortable doing the entire apps with the MERN stack, maybe with time I would prefer Next but not now heh)
 
 You can check the other places through the navigation menu on the top or clicking in the buttons below this section.
 

@@ -22,7 +22,6 @@ I really like those and I’m bad at searching or I struggle to find more of the
         <li>NieR Re[in]carnation: Original Soundtrack #2</li>
         <li>Three - Ego Rock</li>
         <li>Haraguchi Sasuke - Akotoba</li>
-        <li>Mushihimesama Futari OST - Sky of Fragrant Souls</li>
       </ul>
       <p>{`The next ones, I like them enough to want a bit more even if I don't listen to that genre or outside that single song. 
 (Most of them were recommended by other people in the old GBF crew I was part of):`}</p>
