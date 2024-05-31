@@ -1,6 +1,7 @@
 import { sql } from "@vercel/postgres";
 import type { Comments, SearchProps } from "./types";
 import { auth } from "@/auth";
+import { unstable_noStore as noStore } from "next/cache";
 const COMMENTS_PER_PAGE = 9;
 
 export async function getComments({
@@ -9,6 +10,7 @@ export async function getComments({
   authorSearch,
   page,
 }: SearchProps) {
+  noStore();
   const offset = (page - 1) * COMMENTS_PER_PAGE;
   try {
     const { rows } = await sql<Comments>`SELECT * FROM comments 
@@ -38,6 +40,7 @@ export async function getCommentsPages({
   authorSearch,
   page,
 }: SearchProps) {
+  noStore();
   try {
     const count = await sql`SELECT COUNT(*) FROM comments 
       WHERE 
