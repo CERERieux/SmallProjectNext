@@ -4,7 +4,7 @@ export default function TabSimilar() {
   return (
     <TabsContent
       value="similar"
-      className={`flex h-[470px] flex-col gap-6 rounded-md bg-white/50 px-8 py-6 text-sm data-[state=inactive]:hidden dark:bg-transparent/40 dark:backdrop-blur-sm [&_p]:whitespace-pre-wrap`}
+      className={`flex flex-col gap-6 rounded-md bg-white/50 px-8 py-6 text-sm data-[state=inactive]:hidden lg:h-[470px] dark:bg-transparent/40 dark:backdrop-blur-sm [&_p]:whitespace-pre-wrap`}
     >
       <p>{`If you know about something that has similar vibes to any of the stuff listed in this tab, whether is a game, songs or anything in general, feel free to recommend it!
 I really like those and I’m bad at searching or I struggle to find more of them.`}</p>

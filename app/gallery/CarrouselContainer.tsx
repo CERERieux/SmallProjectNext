@@ -356,11 +356,11 @@ export default function CarrouselContainer() {
     </>
   ) : (
     <article
-      className={`flex min-h-screen w-full flex-col items-center gap-8 px-8 py-4 [&_p]:w-[700px] ${shadowIntoLight.className} [&_p]:text-lg`}
+      className={`flex min-h-screen w-full flex-col items-center gap-8 px-8 py-4 ${shadowIntoLight.className}`}
     >
       <h2 className={`text-center text-4xl`}>Drawing gallery</h2>
-      <div className="flex flex-col gap-6 rounded-md bg-white/50 p-4 shadow-md dark:bg-transparent/40 dark:shadow-black/80 dark:backdrop-blur-sm">
-        <p className={`${shadowIntoLight.className}`}>
+      <div className="flex flex-col gap-6 rounded-md bg-white/50 p-4 shadow-md dark:bg-transparent/40 dark:shadow-black/80 dark:backdrop-blur-sm md:[&_p]:w-[700px] md:[&_p]:text-lg">
+        <p>
           Here I want to show some of my drawings I did in 2022 and 2023 with
           some commentary about them ^^
         </p>
@@ -378,10 +378,15 @@ export default function CarrouselContainer() {
           later I&apos;ll see if I can upscale those a little bit more but for
           now I&apos;ll leave them like this)
         </p>
-        <p>To start seeing my drawing, click the button below :)</p>
+        <p>
+          To start seeing my drawing, click the button below :) <br /> (If you
+          don&apos;t see the button, it&apos;s because your screen it&apos;s too
+          small to show the images in a good way, in my opinion. Use a screen
+          with a min-width of 1024px preferably.)
+        </p>
       </div>
       <Button
-        color="bg-lime-300 hover:bg-lime-500 active:bg-blue-300"
+        color="bg-lime-300 hover:bg-lime-500 active:bg-blue-300 hidden lg:inline"
         extraStyles="border-none shadow-lg shadow-black/20 hover:scale-105 hover:shadow-lime-800/40 text-lime-950 active:shadow-none dark:shadow-lime-950/70 dark:hover:shadow-lime-500/30"
         onClick={handleViewGallery}
         xSize="w-40"

@@ -27,7 +27,10 @@ export default async function AreaComments({
   return (
     <DialogQuestionGroup comments={comments}>
       <AsideComments />
-      <article className="grid w-[1100px] grid-cols-3 justify-items-center gap-10 px-8 py-6">
+      <article
+        className={`flex grid-cols-3 flex-col justify-center justify-items-center gap-10 overflow-y-auto px-8 py-6 md:flex-row md:flex-wrap lg:grid lg:w-[1000px]
+        ${!("error" in comments) ? (comments.length < 3 ? "h-[250px]" : "") : ""}`}
+      >
         {!("error" in comments) ? (
           comments.length > 0 ? (
             comments.map((question, i) => {

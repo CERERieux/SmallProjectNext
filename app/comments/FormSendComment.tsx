@@ -18,11 +18,16 @@ interface FormSendCommentProps {
 export default function FormSendComment({ idDialog }: FormSendCommentProps) {
   const [comment, setComment] = useState("");
   const [author, setAuthor] = useState("");
+  const [colsComment, setColComments] = useState(55);
   const [state, formAction] = useFormState(createComment, {
     error: null,
     message: "",
   });
   const { pending } = useFormStatus();
+
+  useEffect(() => {
+    if (window.innerWidth < 600) setColComments(30);
+  }, []);
 
   useEffect(() => {
     if (state.error === null && state.message !== "") {
@@ -90,7 +95,7 @@ export default function FormSendComment({ idDialog }: FormSendCommentProps) {
             Comment
           </TitleInput>
           <TextArea
-            cols={55}
+            cols={colsComment}
             lineStyle={false}
             name="commentContent"
             onChange={handleComment}

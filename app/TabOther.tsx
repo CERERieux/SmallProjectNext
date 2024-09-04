@@ -4,7 +4,7 @@ export default function TabOther() {
   return (
     <TabsContent
       value="other"
-      className={`flex h-[470px] flex-col gap-10 rounded-md bg-white/50 px-8 py-6 text-sm data-[state=inactive]:hidden dark:bg-transparent/40 dark:backdrop-blur-sm [&_p]:whitespace-pre-wrap`}
+      className={`flex flex-col gap-10 rounded-md bg-white/50 px-8 py-6 text-sm data-[state=inactive]:hidden lg:h-[470px] dark:bg-transparent/40 dark:backdrop-blur-sm [&_p]:whitespace-pre-wrap`}
     >
       <p>{`This tab is to share music from other stuff I like
 Instead of trying to fill this with text or a list, better I do and share another playlist with songs to show more about it.

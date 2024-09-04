@@ -14,7 +14,7 @@ export default function HeaderApp() {
 
   return (
     <header
-      className={`flex w-[700] gap-4 ${opacityHeader} items-center justify-center px-6 py-4 transition-all duration-700`}
+      className={`flex gap-4 sm:w-[700] sm:flex-row ${opacityHeader} flex-col items-center justify-center px-6 py-4 transition-all duration-700`}
       id="topMainPage"
     >
       <Image
@@ -22,6 +22,7 @@ export default function HeaderApp() {
         alt="Yoisaki Kanade waving at you."
         width={300}
         height={424}
+        className="order-1 sm:-order-1"
       />
       <section className="rounded-md bg-white/50 px-6 py-4 dark:bg-transparent/70 dark:backdrop-blur-sm">
         <h1 className="text-4xl first-letter:text-lime-500">

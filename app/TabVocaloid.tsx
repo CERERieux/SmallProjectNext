@@ -5,7 +5,7 @@ export default function TabVocaloid() {
   return (
     <TabsContent
       value="vocaloid"
-      className={`flex h-[470px] flex-col gap-8 rounded-md bg-white/50 px-8 py-6 text-sm data-[state=inactive]:hidden dark:bg-transparent/40 dark:backdrop-blur-sm [&_p]:whitespace-pre-wrap`}
+      className={`flex flex-col gap-8 rounded-md bg-white/50 px-8 py-6 text-sm data-[state=inactive]:hidden lg:h-[470px] dark:bg-transparent/40 dark:backdrop-blur-sm [&_p]:whitespace-pre-wrap`}
     >
       <p>
         {`Last year I did a playlist with 65 Vocaloid songs. 

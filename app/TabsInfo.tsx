@@ -5,7 +5,7 @@ import TabOther from "./TabOther";
 
 export default function TabsInfo() {
   return (
-    <Tabs defaultValue="similar" className="w-[1000px]">
+    <Tabs defaultValue="similar" className="lg:w-[1000px]">
       <TabsList className="w-full dark:bg-slate-900">
         <TabsTrigger
           value="similar"
