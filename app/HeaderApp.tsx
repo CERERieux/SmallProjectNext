@@ -31,7 +31,7 @@ export default function HeaderApp() {
         <h2 className="mt-4 text-2xl text-amber-600 dark:text-yellow-200">
           Rieux - Mexico
         </h2>
-        <p className="text-cyan-600 dark:text-cyan-200">English/Español - 26</p>
+        <p className="text-cyan-600 dark:text-cyan-200">English/Español - 27</p>
       </section>
     </header>
   );
